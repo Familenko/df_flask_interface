@@ -1,4 +1,5 @@
 from cx_Freeze import setup, Executable
+# python setup.py build
 
 
 setup(
@@ -8,7 +9,10 @@ setup(
     executables=[Executable("app.py", base="Console")],
     options={
         'build_exe': {
-            'include_files': [('templates', 'templates')],
+            'include_files': [
+                ('static', 'static'),
+                ('templates', 'templates')
+                ],
             'packages': [
                 'flask', 
                 'blinker',
@@ -16,7 +20,8 @@ setup(
                 'itsdangerous', 
                 'jinja2', 
                 'markupsafe',
-                'werkzeug'
+                'werkzeug',
+                'pandas',
             ],
         }
     }
