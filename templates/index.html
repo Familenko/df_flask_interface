@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Односторінковий застосунок</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Введіть дані:</h1>
+    <form action="/process_data" method="post">
+
+        <div class="form-row">
+            <label for="input1">Значення 1:</label>
+            <input type="text" id="input1" name="input1" required>
+        </div>
+        <div class="form-row">
+            <label for="input2">Значення 2:</label>
+            <input type="text" id="input2" name="input2" required>
+        </div>
+        <div class="form-row">
+            <label for="input3">Значення 3:</label>
+            <input type="text" id="input3" name="input3" required>
+        </div>
+        
+        <div class="form-footer">
+            <input type="submit" value="Надіслати" class="btn btn-submit">
+            <a href="/shutdown" class="btn btn-danger">Вийти</a>
+        </div>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
+

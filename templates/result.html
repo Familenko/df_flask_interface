@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результати обробки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Результати обробки</h1>
+    <table>
+        <thead>
+            {% if records %}
+                <tr>
+                    {% for key in records[0].keys() %}
+                        <th>{{ key.capitalize() }}</th>
+                    {% endfor %}
+                </tr>
+            {% endif %}
+        </thead>
+        <tbody>
+            {% for record in records %}
+                <tr>
+                    {% for key, value in record.items() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="form-footer">
+        <a href="/" class="btn btn-back">Назад</a>
+        <a href="/download_csv" class="btn btn-download">Завантажити як CSV</a>
+        <a href="/shutdown" class="btn btn-danger">Вийти</a>
+    </div>
+</body>
+</html>
