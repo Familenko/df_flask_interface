@@ -106,3 +106,14 @@ th {
     background-color: #4CAF50;
     color: white;
 }
+
+input[type="file"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+}

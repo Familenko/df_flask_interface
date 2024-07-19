@@ -7,20 +7,26 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Введіть дані:</h1>
-    <form action="/process_data" method="post">
+    <h1>Введіть дані або завантажте файл:</h1>
+    <form action="/process_data" method="post" enctype="multipart/form-data">
 
         <div class="form-row">
             <label for="input1">Значення 1:</label>
-            <input type="text" id="input1" name="input1" required>
+            <input type="text" id="input1" name="input1">
         </div>
         <div class="form-row">
             <label for="input2">Значення 2:</label>
-            <input type="text" id="input2" name="input2" required>
+            <input type="text" id="input2" name="input2">
         </div>
         <div class="form-row">
             <label for="input3">Значення 3:</label>
-            <input type="text" id="input3" name="input3" required>
+            <input type="text" id="input3" name="input3">
+        </div>
+
+        <!-- File Upload Input -->
+        <div class="form-row">
+            <label for="file">Завантажити:</label>
+            <input type="file" id="file" name="file">
         </div>
         
         <div class="form-footer">

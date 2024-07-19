@@ -39,11 +39,15 @@ def process_data():
     input1 = request.form['input1']
     input2 = request.form['input2']
     input3 = request.form['input3']
+    file = request.files.get('file', None)
 
-    if validate_values(input1, input2, input3):
-        flash('Всі поля повинні містити числа.')
-        return redirect(url_for('index'))
-    df = process_values(input1, input2, input3)
+    if file:
+        df = pd.read_csv(file)
+    else:
+        if validate_values(input1, input2, input3):
+            flash('Всі поля повинні містити числа.')
+            return redirect(url_for('index'))
+        df = process_values(input1, input2, input3)
 
     session['df'] = df.to_json()
     df_records = df.to_dict('records')
